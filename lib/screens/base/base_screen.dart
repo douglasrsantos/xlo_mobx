@@ -6,7 +6,7 @@ import 'package:xlo_mobx/screens/home/home_screen.dart';
 import 'package:xlo_mobx/stores/page_store.dart';
 
 class BaseScreen extends StatefulWidget {
-  BaseScreen({Key? key}) : super(key: key);
+  const BaseScreen({Key? key}) : super(key: key);
 
   @override
   State<BaseScreen> createState() => _BaseScreenState();
@@ -35,7 +35,7 @@ class _BaseScreenState extends State<BaseScreen> {
         controller: pageController,
         physics: const NeverScrollableScrollPhysics(),
         children: [
-          HomeScreen(),
+          const HomeScreen(),
           CreateScreen(),
           Container(color: Colors.yellow,),
           Container(color: Colors.purple,),

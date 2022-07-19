@@ -26,8 +26,9 @@ class FieldTitle extends StatelessWidget {
             ),
           ),
           Text(
+            // ignore: unnecessary_string_interpolations
             '$subtitle',
-            style: TextStyle(
+            style: const TextStyle(
               color: Colors.grey,
               fontSize: 12,
             ),

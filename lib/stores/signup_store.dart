@@ -20,6 +20,7 @@ abstract class _SignupStore with Store {
 
   @computed
   bool get nameValid => name != null && name!.length  >= 6;
+  // ignore: body_might_complete_normally_nullable
   String? get nameError {
     if (name != null) {
       if (nameValid) {
@@ -41,6 +42,7 @@ abstract class _SignupStore with Store {
 
   @computed
   bool? get emailValid => email != null && email!.isEmailValid();
+  // ignore: body_might_complete_normally_nullable
   String? get emailError {
     if (email != null) {
       if (emailValid!) {
@@ -62,6 +64,7 @@ abstract class _SignupStore with Store {
 
   @computed
   bool get phoneValid => phone != null && phone!.length  >= 14;
+  // ignore: body_might_complete_normally_nullable
   String? get phoneError {
     if (phone != null) {
       if (phoneValid) {
@@ -83,6 +86,7 @@ abstract class _SignupStore with Store {
 
   @computed
   bool get pass1Valid => pass1 != null && pass1!.length  >= 6;
+  // ignore: body_might_complete_normally_nullable
   String? get pass1Error {
     if (pass1 != null) {
       if (pass1Valid) {
@@ -104,6 +108,7 @@ abstract class _SignupStore with Store {
 
   @computed
   bool get pass2Valid => pass2 != null && pass2 == pass1;
+  // ignore: body_might_complete_normally_nullable
   String? get pass2Error {
     if (pass2 != null) {
       if (pass2Valid) {

@@ -8,7 +8,7 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        drawer: CustomDrawer(),
+        drawer: const CustomDrawer(),
         appBar: AppBar(),
       ),
     );
