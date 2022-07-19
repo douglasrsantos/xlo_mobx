@@ -12,7 +12,7 @@ abstract class _CreateStoreBase with Store {
   @computed
   bool get imagesValid => images.isNotEmpty;
   String? get imagesError {
-    if (imagesValid) {
+    if (!showErrors || imagesValid) {
       return null;
     } else {
       return 'Insira Imagens';
@@ -28,7 +28,7 @@ abstract class _CreateStoreBase with Store {
   @computed
   bool get titleValid => title.length >= 6;
   String? get titleError {
-    if (titleValid) {
+    if (!showErrors || titleValid) {
       return null;
     } else if (title.isEmpty) {
       return 'Campo Obrigatório';
@@ -46,7 +46,7 @@ abstract class _CreateStoreBase with Store {
   @computed
   bool get descriptionValid => description.length >= 10;
   String? get descriptionError {
-    if (descriptionValid) {
+    if (!showErrors || descriptionValid) {
       return null;
     } else if (description.isEmpty) {
       return 'Campo Obrigatório';
@@ -64,7 +64,7 @@ abstract class _CreateStoreBase with Store {
   @computed
   bool get categoryValid => category != null;
   String? get categoryError {
-    if (categoryValid) {
+    if (!showErrors || categoryValid) {
       return null;
     } else {
       return 'Campo  Obrigatório';
@@ -77,7 +77,7 @@ abstract class _CreateStoreBase with Store {
   Address? get address => cepStore.address;
   bool get addressValid => address != null;
   String? get addressError {
-    if (addressValid) {
+    if (!showErrors || addressValid) {
       return null;
     } else {
       return 'Campo Obrigatório';
@@ -92,7 +92,7 @@ abstract class _CreateStoreBase with Store {
 
   @computed
   num? get price {
-    if (priceText.contains(',')) {
+    if (!showErrors || priceText.contains(',')) {
       return num.tryParse(priceText.replaceAll(RegExp('[^0-9]'), ''))! / 100;
     } else {
       return num.tryParse(priceText);
@@ -125,6 +125,7 @@ abstract class _CreateStoreBase with Store {
       addressValid &&
       priceValid;
 
+  @computed
   void sendPressed() {
     if (!formValid) {
       _send;
@@ -132,6 +133,12 @@ abstract class _CreateStoreBase with Store {
       null;
     }
   }
+
+  @observable
+  bool showErrors = false;
+
+  @action
+  void invalidSendPressed() => showErrors = true;
 
   void _send() {}
 }

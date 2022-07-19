@@ -91,18 +91,21 @@ class CreateScreen extends StatelessWidget {
                     Observer(builder: (_) {
                       return SizedBox(
                         height: 50,
-                        child: ElevatedButton(
-                          onPressed: createStore.sendPressed,
-                          child: const Text(
-                            'Enviar',
-                            style: TextStyle(
-                              fontSize: 18,
+                        child: GestureDetector(
+                          onTap: createStore.invalidSendPressed,
+                          child: ElevatedButton(
+                            onPressed: createStore.sendPressed,
+                            child: const Text(
+                              'Enviar',
+                              style: TextStyle(
+                                fontSize: 18,
+                              ),
                             ),
+                            style: ElevatedButton.styleFrom(
+                                primary: Colors.orange,
+                                onSurface: Colors.orange.withAlpha(120),
+                                tapTargetSize: MaterialTapTargetSize.shrinkWrap),
                           ),
-                          style: ElevatedButton.styleFrom(
-                              primary: Colors.orange,
-                              onSurface: Colors.orange.withAlpha(120),
-                              tapTargetSize: MaterialTapTargetSize.shrinkWrap),
                         ),
                       );
                     }),
